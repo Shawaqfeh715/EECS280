@@ -77,10 +77,6 @@ vector<double> mean_diff_sampling_distribution(
 //          as a pair of upper and lower bounds. For example, the bounds on a
 //          confidence interval with width 0.8 are the 10th and 90th percentiles.
 pair<double, double> confidence_interval(vector<double> v, double width) {
-                    if (v.empty() || width<0 || width>1){
-                       return;
-                    }
-
                     double tail=(1.0-width)/2.0;
 
                     double lower=percentile(v,tail);
