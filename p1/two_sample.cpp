@@ -61,7 +61,6 @@ vector<double> mean_diff_sampling_distribution(
   //   2. Compute the difference in means between the resamples
   //   3. Add the computed value to a vector
   
-  assert(false);
 }
 
 //REQUIRES: v is not empty
