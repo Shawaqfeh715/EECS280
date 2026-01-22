@@ -36,9 +36,9 @@ double median(vector<double> v) {
        }
        std::sort(v.begin(),v.end());
 
-       if (count(v)%2==0){
-          size_t i=(count(v)+1)/2;
-          return v[i];
+       if (count(v)%2==1){
+          size_t mid_idx=count(v)/2;
+          return v[mid_idx];
        }else{
         size_t mid_idx1=count(v)/2-1;
         size_t mid_idx2=count(v)/2;
@@ -84,7 +84,7 @@ double stdev(vector<double> v) {
        }
        double mu=mean(v);
 
-       double numerator;
+       double numerator=0.0;
        for (size_t i=0;i<v.size();i++){
            numerator+=(v[i]-mu)*(v[i]-mu);
        }
@@ -93,29 +93,21 @@ double stdev(vector<double> v) {
 }
 
 double percentile(vector<double> v, double p) {
-       if (v.empty() or p<0.0 or p>1.0){
+       if (v.empty() || p<0.0 || p>1.0){
           return 0.0;
        }
+       std::sort(v.begin(),v.end());
        double rank=p*(count(v)-1)+1;
 
        double k=0;
-       double d=0;
+       double d=modf(rank,&k);
 
-       d=modf(rank,&k);
-
-       std::sort(v.begin(),v.end());
-
-       double vp=0.0;
-
-       if (k+1>v.size())
-       {
-        return vp;
-       }else{
-         vp = v[k]+d*(v[k+1]-v[k]);
+       size_t idx=static_cast<size_t>(k)-1;
+       
+       if (idx>=v.size()-1){
+          return v[v.size()-1];
        }
-       
-       
-       return vp;
+       return v[idx]+d*(v[idx+1]-v[idx]);
 }
 
 vector<double> filter(vector<double> v,
@@ -123,9 +115,8 @@ vector<double> filter(vector<double> v,
                       double target) {
                vector<double> result;
 
-               result.reserve(v.size());
-
-               for (size_t i=0;i<v.size();++i){
+               size_t safe_size=min(v.size(),criteria.size());
+               for (size_t i=0;i<safe_size;++i){
                    if (criteria[i]==target)
                    {
                     result.push_back(v[i]);
