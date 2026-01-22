@@ -34,7 +34,7 @@ void print_descriptive_stats(vector<double> data) {
      std::cout<<"median = "<<median(data);
      std::cout<<"min = "<< min(data);
      std::cout<<"max = "<< max(data);
-     std::cout<<" 0th percentile = "<<percentile(data,0);
+     std::cout<<" 0th percentile = "<<percentile(data,0.0);
      std::cout<<" 25th percentile = "<<percentile(data,0.25);
      std::cout<<" 50th percentile = "<<percentile(data,0.50);
      std::cout<<" 75th percentile = "<<percentile(data,0.75);
@@ -52,16 +52,23 @@ void print_descriptive_stats(vector<double> data) {
 //          resamples of original samples data_A and data_B.
 vector<double> mean_diff_sampling_distribution(
   vector<double> data_A, vector<double> data_B) {
-  // TODO: Implement this function, removing the assert(false); placeholder.
+     vector<double> sampling_distribution;
 
-  // HINT: Repeat the following 1000 times:
-  //   1. Generate bootstrap resamples for data_A and data_B by
-  //      calling the bootstrap_resample() function from the library module.
-  //      Make sure to pass in the iteration number as the sample_num.
-  //   2. Compute the difference in means between the resamples
-  //   3. Add the computed value to a vector
-  
-}
+     
+
+     for (int i = 0; i < 1000; i++)
+     {
+      vector<double> resample_A =bootstrap_resample(data_A,i);
+      vector<double> resample_B=bootstrap_resample(data_B,i);
+
+      double mean_A=mean(resample_A);
+      double mean_B=mean(resample_B);
+      double mean_diff=mean_A-mean_B;
+
+      sampling_distribution.push_back(mean_diff);
+     }
+    return sampling_distribution;
+  }
 
 //REQUIRES: v is not empty
 //          width is between 0 and 1, inclusive
@@ -70,15 +77,17 @@ vector<double> mean_diff_sampling_distribution(
 //          as a pair of upper and lower bounds. For example, the bounds on a
 //          confidence interval with width 0.8 are the 10th and 90th percentiles.
 pair<double, double> confidence_interval(vector<double> v, double width) {
-  // TODO: Implement this function, removing the assert(false); placeholder.
-  
-  // HINT: Use the percentile function as a helper
-  //       to compute the lower and upper bounds.
+                    if (v.empty() || width<0 || width>1){
+                       return;
+                    }
 
-  // HINT: You can return a pair like this:
-  //   return {lower, upper};
-  
-  assert(false);
+                    double tail=(1.0-width)/2.0;
+
+                    double lower=percentile(v,tail);
+
+                    double upper=percentile(v,1.0-tail);
+
+                    return {lower,upper};
 }
 
 void two_sample_analysis(string file_name, string filter_column_name,
