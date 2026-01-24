@@ -27,18 +27,18 @@ void print_descriptive_stats(vector<double> data) {
      {
       return;
      }
-     std::cout<<"count = "<<count(data);
-     std::cout<<"sum = "<<sum(data);
-     std::cout<<"mean = "<<mean(data);
-     std::cout<<"stdev = "<<stdev(data);
-     std::cout<<"median = "<<median(data);
-     std::cout<<"min = "<< min(data);
-     std::cout<<"max = "<< max(data);
-     std::cout<<" 0th percentile = "<<percentile(data,0.0);
-     std::cout<<" 25th percentile = "<<percentile(data,0.25);
-     std::cout<<" 50th percentile = "<<percentile(data,0.50);
-     std::cout<<" 75th percentile = "<<percentile(data,0.75);
-     std::cout<<" 100th percentile = "<<percentile(data,1);
+     std::cout<<"count = "<<count(data)<<endl;
+     std::cout<<"sum = "<<sum(data)<<endl;
+     std::cout<<"mean = "<<mean(data)<<endl;
+     std::cout<<"stdev = "<<stdev(data)<<endl;
+     std::cout<<"median = "<<median(data)<<endl;
+     std::cout<<"min = "<< min(data)<<endl;
+     std::cout<<"max = "<< max(data)<<endl;
+     std::cout<<"  0th percentile = "<<percentile(data,0.0)<<endl;
+     std::cout<<" 25th percentile = "<<percentile(data,0.25)<<endl;
+     std::cout<<" 50th percentile = "<<percentile(data,0.50)<<endl;
+     std::cout<<" 75th percentile = "<<percentile(data,0.75)<<endl;
+     std::cout<<"100th percentile = "<<percentile(data,1)<<endl;
 
 
 
