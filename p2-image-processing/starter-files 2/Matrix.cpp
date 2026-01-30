@@ -7,7 +7,15 @@
 // EFFECTS:  Initializes *mat as a Matrix with the given width and height,
 //           with all elements initialized to 0.
 void Matrix_init(Matrix* mat, int width, int height) {
-  assert(false); // TODO Replace with your implementation!
+     if (width<0 || height<0)
+     {
+      for (int i = 0; i < width; i++)
+      {
+        
+      }
+      
+     }
+
 }
 
 // REQUIRES: mat points to a valid Matrix
