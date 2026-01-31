@@ -7,15 +7,11 @@
 // EFFECTS:  Initializes *mat as a Matrix with the given width and height,
 //           with all elements initialized to 0.
 void Matrix_init(Matrix* mat, int width, int height) {
-     if (width<0 || height<0)
-     {
-      for (int i = 0; i < width; i++)
-      {
-        
-      }
-      
-     }
+     mat->height=height;
+     mat->width=width;
 
+     mat->data.assign(height*width,0);
+     
 }
 
 // REQUIRES: mat points to a valid Matrix
@@ -27,7 +23,7 @@ void Matrix_init(Matrix* mat, int width, int height) {
 //           by a newline. This means there will be an "extra" space at
 //           the end of each line.
 void Matrix_print(const Matrix* mat, std::ostream& os) {
-  assert(false); // TODO Replace with your implementation!
+    assert(false);
 }
 
 // REQUIRES: mat points to a valid Matrix
