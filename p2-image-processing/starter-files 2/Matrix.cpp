@@ -11,7 +11,7 @@ void Matrix_init(Matrix* mat, int width, int height) {
      mat->width=width;
 
      mat->data.assign(height*width,0);
-     
+
 }
 
 // REQUIRES: mat points to a valid Matrix
@@ -23,7 +23,17 @@ void Matrix_init(Matrix* mat, int width, int height) {
 //           by a newline. This means there will be an "extra" space at
 //           the end of each line.
 void Matrix_print(const Matrix* mat, std::ostream& os) {
-    assert(false);
+     os<<Matrix_width(mat)<<" "<<Matrix_height(mat)<<endl;
+
+     for (int r = 0; r<Matrix_height(mat); r++)
+     {
+      for (size_t i = 0; i < count; i++)
+      {
+        /* code */
+      }
+      
+     }
+     
 }
 
 // REQUIRES: mat points to a valid Matrix
