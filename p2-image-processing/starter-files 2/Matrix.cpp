@@ -25,13 +25,13 @@ void Matrix_init(Matrix* mat, int width, int height) {
 void Matrix_print(const Matrix* mat, std::ostream& os) {
      os<<Matrix_width(mat)<<" "<<Matrix_height(mat)<<endl;
 
-     for (int r = 0; r<Matrix_height(mat); r++)
+     for (int row = 0; row<Matrix_height(mat); row++)
      {
-      for (size_t i = 0; i < count; i++)
+      for (int col = 0; col < Matrix_width(mat); col++)
       {
-        /* code */
+        os<<*Matrix_at(mat,row,col)<<" ";
       }
-      
+      os << "\n";
      }
      
 }
@@ -39,13 +39,13 @@ void Matrix_print(const Matrix* mat, std::ostream& os) {
 // REQUIRES: mat points to a valid Matrix
 // EFFECTS:  Returns the width of the Matrix.
 int Matrix_width(const Matrix* mat) {
-  assert(false); // TODO Replace with your implementation!
+  return mat->width; // TODO Replace with your implementation!
 }
 
 // REQUIRES: mat points to a valid Matrix
 // EFFECTS:  Returns the height of the Matrix.
 int Matrix_height(const Matrix* mat) {
-  assert(false); // TODO Replace with your implementation!
+  return mat->height; // TODO Replace with your implementation!
 }
 
 // REQUIRES: mat points to a valid Matrix
@@ -57,7 +57,11 @@ int Matrix_height(const Matrix* mat) {
 // EFFECTS:  Returns a pointer to the element in the Matrix
 //           at the given row and column.
 int* Matrix_at(Matrix* mat, int row, int column) {
-  assert(false); // TODO Replace with your implementation!
+     assert(row<mat->height && column <mat->width);
+
+     int idx=(row*mat->width)+column;
+
+     return &(mat->data[idx]);
 }
 
 // REQUIRES: mat points to a valid Matrix
@@ -67,14 +71,15 @@ int* Matrix_at(Matrix* mat, int row, int column) {
 // EFFECTS:  Returns a pointer-to-const to the element in
 //           the Matrix at the given row and column.
 const int* Matrix_at(const Matrix* mat, int row, int column) {
-  assert(false); // TODO Replace with your implementation!
+      int idx=row*mat->width+column;
+      return &mat->data[idx];
 }
 
 // REQUIRES: mat points to a valid Matrix
 // MODIFIES: *mat
 // EFFECTS:  Sets each element of the Matrix to the given value.
 void Matrix_fill(Matrix* mat, int value) {
-  assert(false); // TODO Replace with your implementation!
+     mat->data.assign(mat->height*mat->width,value);
 }
 
 // REQUIRES: mat points to a valid Matrix
