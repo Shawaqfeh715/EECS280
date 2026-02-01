@@ -100,7 +100,7 @@ void Matrix_fill_border(Matrix* mat, int value) {
      for (int row = 0; row < height; row++)
      {
       *Matrix_at(mat,row,0)=value;
-      *Matrix_at(mat,row,width-1);
+      *Matrix_at(mat,row,width-1)=value;
      }
 }
 
@@ -147,10 +147,10 @@ int Matrix_column_of_min_value_in_row(const Matrix* mat, int row,
         min_val=curr_val;
         min_col=c;
       }
-      return min_col; 
     }
+    return min_col;
     
-                                      }
+ }
 
 // REQUIRES: mat points to a valid Matrix
 //           0 <= row && row < Matrix_height(mat)
@@ -170,7 +170,6 @@ int Matrix_min_value_in_row(const Matrix* mat, int row,
       {
         min_val=curr_val;
       }
-      return min_val;
     }
-    
-                            }
+  return min_val;
+  }
