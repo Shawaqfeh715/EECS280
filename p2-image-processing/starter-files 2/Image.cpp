@@ -22,6 +22,23 @@ void Image_init(Image* img, int width, int height) {
 //           from the given input stream.
 // NOTE:     See the project spec for a discussion of PPM format.
 void Image_init(Image* img, std::istream& is) {
+     std::string p3;
+
+     int width,height,max_intesity;
+
+     Image_init(img,width,height);
+
+     for (int r = 0; r < height; r++)
+     {
+      for (int c = 0; c < width; c++)
+      {
+        Pixel color;
+        is>>color.r>>color.g>>color.b;
+
+        Image_set_pixel(img,r,c,color);
+      }
+      
+     }
      
 }
 
@@ -40,19 +57,32 @@ void Image_init(Image* img, std::istream& is) {
 //           "extra" space at the end of each line. See the project spec
 //           for an example.
 void Image_print(const Image* img, std::ostream& os) {
-  assert(false); // TODO Replace with your implementation!
+     os<<"P3\n";
+     os<<Image_width(img)<<" "<<Image_height(img)<<"\n";
+     os<<"255\n";
+
+     for (int r = 0; r < Image_height(img); r++)
+     {
+      for (int c = 0; c < Image_width(img); c++)
+      {
+        Pixel pix=Image_get_pixel(img,r,c);
+        os<<pix.r<<" "<<pix.g<<" "<<pix.b<<" ";
+      }
+      os<<"\n";
+     }
+     
 }
 
 // REQUIRES: img points to a valid Image
 // EFFECTS:  Returns the width of the Image.
 int Image_width(const Image* img) {
-  assert(false); // TODO Replace with your implementation!
+    return img->width;
 }
 
 // REQUIRES: img points to a valid Image
 // EFFECTS:  Returns the height of the Image.
 int Image_height(const Image* img) {
-  assert(false); // TODO Replace with your implementation!
+    return img->height;
 }
 
 // REQUIRES: img points to a valid Image
@@ -60,7 +90,9 @@ int Image_height(const Image* img) {
 //           0 <= column && column < Image_width(img)
 // EFFECTS:  Returns the pixel in the Image at the given row and column.
 Pixel Image_get_pixel(const Image* img, int row, int column) {
-  assert(false); // TODO Replace with your implementation!
+      Pixel pix;
+
+      
 }
 
 // REQUIRES: img points to a valid Image
