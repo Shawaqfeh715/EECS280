@@ -7,7 +7,11 @@
 // EFFECTS:  Initializes the Image with the given width and height, with
 //           all pixels initialized to RGB values of 0.
 void Image_init(Image* img, int width, int height) {
-  assert(false); // TODO Replace with your implementation!
+     img->width=width;
+     img->height=height;
+     Matrix_init(&(img->blue_channel),width,height);
+     Matrix_init(&(img->red_channel),width,height);
+     Matrix_init(&(img->green_channel),width,height);
 }
 
 // REQUIRES: img points to an Image
@@ -18,7 +22,7 @@ void Image_init(Image* img, int width, int height) {
 //           from the given input stream.
 // NOTE:     See the project spec for a discussion of PPM format.
 void Image_init(Image* img, std::istream& is) {
-  assert(false); // TODO Replace with your implementation!
+     
 }
 
 // REQUIRES: img points to a valid Image
