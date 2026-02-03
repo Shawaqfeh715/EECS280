@@ -12,7 +12,7 @@ USE_LIBJPEG ?=
 
 # If necessary, set the following to the location of your
 # libjpeg/libjpeg-turbo installation,
-# e.g. LIBJPEG_PATH ?= /opt/homebrew/Cellar/jpeg-turbo/3.0.2
+# e.g. LIBJPEG_PATH ?= opt/homebrew/Cellar/jpeg-turbo/3.0.2
 LIBJPEG_PATH ?=
 
 ifeq "$(strip $(USE_LIBJPEG))" "true"

@@ -26,6 +26,8 @@ void Image_init(Image* img, std::istream& is) {
 
      int width,height,max_intesity;
 
+     is>>p3>>width>>height>>max_intesity;
+
      Image_init(img,width,height);
 
      for (int r = 0; r < height; r++)
@@ -122,7 +124,6 @@ void Image_fill(Image* img, Pixel color) {
       {
         Image_set_pixel(img,r,c,color);
       }
-      
      }
      
 }
