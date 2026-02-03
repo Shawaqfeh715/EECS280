@@ -92,6 +92,11 @@ int Image_height(const Image* img) {
 Pixel Image_get_pixel(const Image* img, int row, int column) {
       Pixel pix;
 
+      pix.r=*Matrix_at(&img->red_channel,row,column);
+      pix.g=*Matrix_at(&img->green_channel,row,column);
+      pix.b=*Matrix_at(&img->blue_channel,row,column);
+
+      return pix;
       
 }
 
@@ -102,12 +107,22 @@ Pixel Image_get_pixel(const Image* img, int row, int column) {
 // EFFECTS:  Sets the pixel in the Image at the given row and column
 //           to the given color.
 void Image_set_pixel(Image* img, int row, int column, Pixel color) {
-  assert(false); // TODO Replace with your implementation!
+      *Matrix_at(&img->red_channel,row,column)=color.r;
+      *Matrix_at(&img->green_channel,row,column)=color.g;
+      *Matrix_at(&img->blue_channel,row,column)=color.b;
 }
 
 // REQUIRES: img points to a valid Image
 // MODIFIES: *img
 // EFFECTS:  Sets each pixel in the image to the given color.
 void Image_fill(Image* img, Pixel color) {
-  assert(false); // TODO Replace with your implementation!
+     for (int r = 0; r < Image_width(img); r++)
+     {
+      for (int c = 0; c < Image_height(img); c++)
+      {
+        Image_set_pixel(img,r,c,color);
+      }
+      
+     }
+     
 }
